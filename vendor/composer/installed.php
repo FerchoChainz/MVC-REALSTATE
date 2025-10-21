@@ -3,7 +3,7 @@
         'name' => 'lazaroestrada/bienesraices',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '515b92db8c954bddd64d0f4f4faf7ad5ff9d90c1',
+        'reference' => 'e3c5c6830ceec57970212f0243392bfa79fcfb13',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'lazaroestrada/bienesraices' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '515b92db8c954bddd64d0f4f4faf7ad5ff9d90c1',
+            'reference' => 'e3c5c6830ceec57970212f0243392bfa79fcfb13',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
