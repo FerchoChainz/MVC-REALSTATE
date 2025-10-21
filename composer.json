@@ -1,0 +1,19 @@
+{
+    "name": "lazaroestrada/bienesraices",
+    "description": "Create project with POO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "FerchoChainz",
+            "email": "tragicomedia9@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Model\\" : "./models"
+        }
+    }
+}

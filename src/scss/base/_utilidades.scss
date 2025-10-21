@@ -1,0 +1,15 @@
+@use "variables" as v;
+@use "sass:math";
+
+.section {
+  margin-top: math.div(v.$gap, 2);
+  margin-bottom: math.div(v.$gap, 2);
+}
+.centered-content {
+  max-width: 80rem;
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
