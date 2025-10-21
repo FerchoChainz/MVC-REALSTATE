@@ -27,5 +27,10 @@ class Router{
             echo 'ERROR 404';
         }
     }
+
+    // Show the views 
+    public function render($view){
+        include __DIR__ . "/views/$view.php";
+    }
 }
 
