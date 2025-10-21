@@ -40,7 +40,7 @@ class Router{
 
         include __DIR__ . "/views/$view.php";
         $content = ob_get_clean(); //cleaning memory 
-        include __DIR__ . '/views/propertys/layout.php';
+        include __DIR__ . '/views/layout.php';
     }
 }
 

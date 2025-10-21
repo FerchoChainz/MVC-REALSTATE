@@ -13,8 +13,8 @@
 
 
 
-    <a href="/admin/properties/create.php" class="button green-btn">New Propertie</a>
-    <a href="/admin/sellers/create.php" class="button green-btn">New Seller</a>
+    <a href="/property/create" class="button green-btn">New Propertie</a>
+    <a href="/property/update" class="button green-btn">New Seller</a>
 
     <h2>Properties</h2>
 

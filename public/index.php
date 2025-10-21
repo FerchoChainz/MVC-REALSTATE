@@ -11,5 +11,5 @@ $router = new Router();
 
 $router->get('/admin', [PropertyController::class, 'index']);
 $router->get('/property/create', [PropertyController::class, 'create']);
-$router->get('/property/update', 'about_contact');
+$router->get('/property/update', [PropertyController::class, 'update']);
 $router->checkRoutes();
