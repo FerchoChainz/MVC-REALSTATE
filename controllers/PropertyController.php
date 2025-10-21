@@ -2,10 +2,18 @@
 
 namespace Controllers;
 use MVC\Router;
+use Model\Propertie;
 
 class PropertyController{
     public static function index(Router $router){
-        $router->render('propertys/admin');
+
+        $properties = Propertie::all();
+        $result = null;
+        
+        $router->render('propertys/admin',[
+            "properties" => $properties,
+            "result" => $result
+        ]);
     }
     public static function create(){
         echo 'creating';
