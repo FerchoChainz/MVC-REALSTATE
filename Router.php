@@ -10,6 +10,10 @@ class Router{
     public function get($url,$fn){
         $this->GETroutes[$url] = $fn;
     }
+    
+    public function post($url, $fn){
+        $this->POSTroutes[$url] = $fn;
+    }
 
     public function checkRoutes(){
         $actualURL = $_SERVER['PATH_INFO'] ?? '/';
@@ -18,6 +22,8 @@ class Router{
 
         if($method === 'GET'){
             $fn = $this->GETroutes[$actualURL] ?? null;
+        } else {
+            $fn = $this->POSTroutes[$actualURL] ?? null;
         }
 
         if($fn){
@@ -27,6 +33,7 @@ class Router{
             echo 'ERROR 404';
         }
     }
+
 
     // Show the views 
     public function render($view ,$data = []){
