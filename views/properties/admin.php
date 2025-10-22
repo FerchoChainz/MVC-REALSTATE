@@ -47,7 +47,7 @@
                         </form>
 
 
-                        <a href="admin/properties/update.php?id=<?php echo $propertie->id; ?>" class="blue-btn-b">Update</a>
+                        <a href="/property/update?id=<?php echo $propertie->id; ?>" class="blue-btn-b">Update</a>
                     </td>
                 </tr>
 

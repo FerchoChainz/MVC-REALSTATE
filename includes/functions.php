@@ -3,19 +3,21 @@
 
 define('TEMPLATES_URL', __DIR__ . '/templates');
 
-define('FUNCTIONS_URL',__DIR__ . 'functions.php');
+define('FUNCTIONS_URL', __DIR__ . 'functions.php');
 
 define('DIR_IMAGES', $_SERVER['DOCUMENT_ROOT'] . '/images/');
 
-function addTemplate(string $name, bool $main = false){
-    include TEMPLATES_URL ."/{$name}.php";
+function addTemplate(string $name, bool $main = false)
+{
+    include TEMPLATES_URL . "/{$name}.php";
 }
 
-function isAuth() : bool {
+function isAuth(): bool
+{
     session_start();
-    
+
     $auth = $_SESSION['login'];
-    if($auth){
+    if ($auth) {
 
         return true;
     }
@@ -23,10 +25,10 @@ function isAuth() : bool {
     header('Location: /');
 
     return false;
-
 }
 
-function debbuger($variable){
+function debbuger($variable)
+{
     echo '<pre>';
     var_dump($variable);
     echo '</pre>';
@@ -35,7 +37,8 @@ function debbuger($variable){
 
 
 // scape HTML / sanitize HTML -- Helper
-function s($html):string{
+function s($html): string
+{
     $s = htmlspecialchars($html);
 
     return $s;
@@ -43,46 +46,50 @@ function s($html):string{
 
 // Convert type currency
 
-function currency($number){
+function currency($number)
+{
     $locale = 'es_MX';
-    $formatter = new NumberFormatter($locale,NumberFormatter::CURRENCY);
+    $formatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
 
     echo $formatter->formatCurrency($number, 'MXN');
 }
 
 
 // TO DO: IMPLEMENT THE TYPE OF FORMAT PHONE NUMBER
-function formattingPhone($phone){
-    
+function formattingPhone($phone)
+{
+
     // Pass phone number in preg_match function
-    if(preg_match(
-        '/^\+[0-9]([0-9]{3})([0-9]{3})([0-9]{4})$/', 
-    $phone, $value)) {
-    
+    if (preg_match(
+        '/^\+[0-9]([0-9]{3})([0-9]{3})([0-9]{4})$/',
+        $phone,
+        $value
+    )) {
+
         // Store value in format variable
-        $format = $value[1] . '-' . 
+        $format = $value[1] . '-' .
             $value[2] . '-' . $value[3];
-    }
-    else {
-       
+    } else {
+
         // If given number is invalid
         echo "Invalid phone number <br>";
     }
-    
 }
 
 // validate type content 
-function validateTypeContent($type){
-    $types = ['seller','propertie'];
+function validateTypeContent($type)
+{
+    $types = ['seller', 'propertie'];
 
     // search a string o value in array.
     return in_array($type, $types);
 }
 
-function showDialogMessage($code){
+function showDialogMessage($code)
+{
     $message = [
-        'message'=> false,
-        'class'=> ''
+        'message' => false,
+        'class' => ''
     ];
 
     switch ($code) {
@@ -94,7 +101,7 @@ function showDialogMessage($code){
             $message['message'] = 'Updated Succesfully';
             $message['class'] = 'alert updated';
             break;
-        case 3: 
+        case 3:
             $message['message'] = 'Deleted Succesfully';
             $message['class'] = 'alert deleted';
             break;
@@ -105,4 +112,16 @@ function showDialogMessage($code){
 
 
     return $message;
+}
+
+function validateOrRedirect($url):string {
+    // Validate valid ID
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if (!$id) {
+        header("Location: $url");
+    }
+
+    return $id;
 }

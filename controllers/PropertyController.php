@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Intervention\Image\Colors\Profile;
 use MVC\Router;
 use Model\Propertie;
 use Model\Seller;
@@ -15,7 +16,7 @@ class PropertyController
 
         $properties = Propertie::all();
         $result = $_GET['result'] ?? null;
-        $router->render('propertys/admin', [
+        $router->render('properties/admin', [
             "properties" => $properties,
             "result" => $result
         ]);
@@ -66,14 +67,22 @@ class PropertyController
             }
         }
 
-        $router->render('propertys/create', [
+        $router->render('properties/create', [
             "property" => $property,
             "sellers" => $sellers,
             "errors" => $errors
         ]);
     }
-    public static function update()
+    public static function update(Router $router)
     {
-        echo 'updating';
+        $id = validateOrRedirect('/admin');
+        $property = Propertie::find($id);
+        $sellers = Seller::all();
+        $errors = Seller::getErrors();
+        $router->render('/properties/update', [
+            "property" => $property,
+            "sellers" => $sellers,
+            "errors" => $errors
+        ]);
     }
 }
