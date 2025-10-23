@@ -14,7 +14,7 @@
 
 
     <a href="/property/create" class="button green-btn">New Propertie</a>
-    <a href="/property/update" class="button green-btn">New Seller</a>
+    <a href="/seller/create" class="button green-btn">New Seller</a>
 
     <h2>Properties</h2>
 
@@ -39,7 +39,7 @@
                     <td><img src="/images/<?php echo $propertie->image; ?>" alt="" class="table-img"></td>
                     <td><?php currency($propertie->price); ?></td>
                     <td>
-                        <form action="" method="POST" class="w-100">
+                        <form action="/property/delete" method="POST" class="w-100">
                             <input type="hidden" name="id" value="<?php echo $propertie->id; ?>">
                             <input type="hidden" name="type" value="propertie">
 
@@ -54,4 +54,43 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+
+    <h2>Sellers</h2>
+
+    <table class="properties">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Last name</th>
+                <th>Phone number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+
+        <tbody> <!-- Show results -->
+            <?php foreach ($sellers as $seller): ?>
+                <tr>
+                    <td><?php echo $seller->id; ?></td>
+                    <td><?php echo $seller->name; ?></td>
+                    <td><?php echo $seller->last_name; ?></td>
+                    <td><?php echo $seller->phone_number; ?></td>
+                    <td>
+                        <form action="/seller/delete" method="POST" class="w-100">
+                            <input type="submit" value="Delete" class="red-btn-b">
+                            <input type="hidden" name="id" value="<?php echo $seller->id; ?>">
+                            <input type="hidden" name="type" value="seller">
+                        </form>
+
+
+                        <a href="seller/update?id=<?php echo $seller->id; ?>" class="blue-btn-b">Update</a>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
 </main>

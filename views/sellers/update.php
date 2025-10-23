@@ -1,5 +1,5 @@
 <main class="container section">
-    <h1>Update</h1>
+    <h1>Update Seller Info</h1>
 
     <a href="/admin" class="button green-btn">Go Back</a>
 

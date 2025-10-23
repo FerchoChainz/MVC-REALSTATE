@@ -15,10 +15,14 @@ class PropertyController
     {
 
         $properties = Propertie::all();
+        $sellers = Seller::all();
+
+
         $result = $_GET['result'] ?? null;
         $router->render('properties/admin', [
             "properties" => $properties,
-            "result" => $result
+            "result" => $result,
+            "sellers" => $sellers
         ]);
     }
     public static function create(Router $router)
@@ -77,12 +81,71 @@ class PropertyController
     {
         $id = validateOrRedirect('/admin');
         $property = Propertie::find($id);
+        $errors = Propertie::getErrors();
         $sellers = Seller::all();
-        $errors = Seller::getErrors();
+
+
+        // exect after user send form
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+
+            // Asign atributes
+            $args = $_POST['property'];;
+
+
+            // this metod sync the late input by user and the object in memory
+            $property->sync($args);
+
+
+            // validate
+            $errors = $property->validate();
+
+            // upload files
+            // This code manage de upload files or images
+            $nameImage = md5(uniqid(rand(), true)) . ".jpg";
+            if ($_FILES['property']['tmp_name']['image']) {
+                $manager = new Image(Driver::class);
+                $image = $manager->read($_FILES['property']['tmp_name']['image'])->cover(800, 600);
+                $property->setImage($nameImage);
+
+                // debbuger($image);
+            }
+
+
+
+            // review if error logs is empty
+            if (empty($errors)) {
+                if ($_FILES['property']['tmp_name']['image']) {
+                    // save the image 
+                    $image->save(DIR_IMAGES . $nameImage);
+                }
+                $property->saveUpdate();
+            }
+        }
+
         $router->render('/properties/update', [
             "property" => $property,
             "sellers" => $sellers,
             "errors" => $errors
         ]);
+    }
+
+    public static function delete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $id = filter_var($id, FILTER_VALIDATE_INT);
+
+            if ($id) {
+
+                $type = $_POST['type'];
+
+                if (validateTypeContent($type)) {
+                    // Compare the type that will be deleted
+                    $seller = Propertie::find($id);
+                    $seller->delete();
+                }
+            }
+        }
     }
 }
