@@ -1,6 +1,6 @@
 <div class="container-adds">
 
-<?php foreach ($properties as $propertie){?>
+  <?php foreach ($properties as $propertie) { ?>
 
     <div class="adds">
       <img src="/images/<?php echo $propertie->image; ?>" alt="Anuncio" loading="lazy">
@@ -26,11 +26,10 @@
           </li>
         </ul>
 
-        <a href="add.php?id=<?php echo $propertie->id; ?>" class="yellow-btn-b">View Property</a>
+        <a href="ad?id=<?php echo $propertie->id; ?>" class="yellow-btn-b">View Property</a>
 
       </div><!--content-adds-->
     </div> <!--Adds-->
-    
-    <?php } ?>
-</div><!--container-adds-->
 
+  <?php } ?>
+</div><!--container-adds-->

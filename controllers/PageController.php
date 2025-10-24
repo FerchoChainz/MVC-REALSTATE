@@ -31,16 +31,31 @@ class PageController{
         ]);
 
     }
-    public static function ad(){
-        echo 'FROM AD';
+    public static function ad(Router $router){
+        $id = validateOrRedirect('/ads');
+
+        $property = Propertie::find($id);
+
+        $router->render('pages/ad',[
+            'property' => $property
+        ]);
     }
-    public static function blog(){
-        echo 'FROM BLOG';
+    public static function blog(Router $router){
+        
+        $router->render('pages/blog',[
+            
+        ]);
     }
-    public static function entry(){
-        echo 'FROM ENTRY';
+    public static function entry(Router $router){
+
+        $router->render('pages/entry',[
+
+        ]);
     }
-    public static function contact(){
-        echo 'FROM CONTACT';
+    public static function contact(Router $router){
+
+        $router->render('pages/contact',[
+
+        ]);
     }
 }

@@ -35,7 +35,6 @@ $router->get('/',[PageController::class, 'index']);
 $router->get('/about',[PageController::class, 'about']);
 $router->get('/ads',[PageController::class, 'ads']);
 $router->get('/ad',[PageController::class, 'ad']);
-$router->get('/property',[PageController::class, 'property']);
 $router->get('/blog',[PageController::class, 'blog']);
 $router->get('/entry',[PageController::class, 'entry']);
 $router->get('/contact',[PageController::class, 'contact']);
