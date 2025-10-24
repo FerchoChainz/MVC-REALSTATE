@@ -5,6 +5,9 @@ require_once __DIR__ . '/../includes/app.php';
 use MVC\Router;
 use Controllers\PropertyController;
 use Controllers\SellerController;
+use Controllers\PageController;
+
+// -------------- PRIVATE ZONE -------------------
 
 $router = new Router();
 
@@ -24,6 +27,19 @@ $router->get('/seller/update',[SellerController::class, 'update']);
 $router->post('/seller/update',[SellerController::class, 'update']);
 $router->get('/seller/delete',[SellerController::class, 'delete']);
 $router->post('/seller/delete',[SellerController::class, 'delete']);
+
+// -------------- END PRIVATE ZONE -------------------
+
+// MAIN PAGES ROUTING
+$router->get('/',[PageController::class, 'index']);
+$router->get('/about',[PageController::class, 'about']);
+$router->get('/ads',[PageController::class, 'ads']);
+$router->get('/ad',[PageController::class, 'ad']);
+$router->get('/property',[PageController::class, 'property']);
+$router->get('/blog',[PageController::class, 'blog']);
+$router->get('/entry',[PageController::class, 'entry']);
+$router->get('/contact',[PageController::class, 'contact']);
+
 
 $router->checkRoutes();
 

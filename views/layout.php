@@ -42,10 +42,10 @@ if(!isset($main)){
 
 
                     <nav class="navegation">
-                        <a href="about.php">About us</a>
-                        <a href="adds.php">Advertisements</a>
-                        <a href="blog.php">Blog</a>
-                        <a href="contact.php">Contact</a>
+                        <a href="/about">About us</a>
+                        <a href="/ads">Advertisements</a>
+                        <a href="/blog.php">Blog</a>
+                        <a href="/contact.php">Contact</a>
 
                         <?php if ($auth): ?>
                             <a href="logout.php">Logout</a>
