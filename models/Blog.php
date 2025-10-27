@@ -28,5 +28,26 @@ class Blog extends ActiveRecord{
         $this->content = $args['content'] ?? null;
     }
 
+    public function validate(){
+        if(!$this->tittle){
+            self::$errors[] = "Tittle can't be empty.";
+        }
+
+        if(!$this->author){
+            self::$errors[] = "Author can't be empty.";
+        }
+
+        if(!$this->image){
+            self::$errors[] = 'Image is mandatory.';
+        }
+
+        if(!$this->content){
+            self::$errors[] = "Content can't be empty";
+        }
+        
+
+        return self::$errors;
+    }
+
     
 }

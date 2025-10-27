@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\BlogController;
 use MVC\Router;
 use Controllers\PropertyController;
 use Controllers\SellerController;
@@ -27,6 +28,9 @@ $router->get('/seller/update',[SellerController::class, 'update']);
 $router->post('/seller/update',[SellerController::class, 'update']);
 $router->get('/seller/delete',[SellerController::class, 'delete']);
 $router->post('/seller/delete',[SellerController::class, 'delete']);
+
+// ROUTES BLOG
+$router->get('/blog/create', [BlogController::class, 'create']);
 
 // -------------- END PRIVATE ZONE -------------------
 

@@ -15,6 +15,7 @@
 
     <a href="/property/create" class="button green-btn">New Propertie</a>
     <a href="/seller/create" class="button green-btn">New Seller</a>
+    <a href="/blog/create" class="button green-btn">New Blog Post</a>
 
     <h2>Properties</h2>
 
