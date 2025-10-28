@@ -7,6 +7,8 @@ define('FUNCTIONS_URL', __DIR__ . 'functions.php');
 
 define('DIR_IMAGES', $_SERVER['DOCUMENT_ROOT'] . '/images/');
 
+define('DIR_BLOG_IMAGES',$_SERVER['DOCUMENT_ROOT'] . '/images/blog/');
+
 function addTemplate(string $name, bool $main = false)
 {
     include TEMPLATES_URL . "/{$name}.php";
@@ -44,8 +46,8 @@ function s($html): string
     return $s;
 }
 
-// Convert type currency
 
+// Convert type currency
 function currency($number)
 {
     $locale = 'es_MX';

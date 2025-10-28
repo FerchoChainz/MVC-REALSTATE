@@ -8,7 +8,6 @@ class Propertie extends ActiveRecord{
     protected static $table = 'properties';
     protected static $DBcols = ['id', 'tittle', 'price', 'image', 'description', 'rooms', 'wc', 'parking', 'created', 'sellers_id'];
 
-
     public $id;
     public $tittle;
     public $price;

@@ -17,7 +17,8 @@
     <?php endif; ?>
 
     <label for="description">Description:</label>
-    <textarea id="description" name="property[description]"><?php echo s($property->description); ?></textarea>
+    <textarea id="description" name="property[description]"><?php echo s($property->description); ?>
+</textarea>
 </fieldset>
 
 <fieldset>

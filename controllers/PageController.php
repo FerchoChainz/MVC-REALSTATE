@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Blog;
 use MVC\Router;
 use Model\Propertie;
 
@@ -9,10 +10,12 @@ class PageController{
    
     public static function index(Router $router){
         $properties = Propertie::get(3);
+        $blog = Blog::get(2);
 
         $router->render('pages/index',[
             'properties' => $properties,
-            'main' => true
+            'main' => true,
+            'blog' => $blog
         ]);
     }
     public static function about(Router $router){

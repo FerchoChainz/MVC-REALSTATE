@@ -31,6 +31,7 @@ $router->post('/seller/delete',[SellerController::class, 'delete']);
 
 // ROUTES BLOG
 $router->get('/blog/create', [BlogController::class, 'create']);
+$router->post('/blog/create', [BlogController::class, 'create']);
 
 // -------------- END PRIVATE ZONE -------------------
 

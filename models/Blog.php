@@ -1,18 +1,17 @@
 <?php  
 
-namespace Models;
+namespace Model;
 
-use Model\ActiveRecord;
 use PDO;
 
 class Blog extends ActiveRecord{
 
     protected static $table = 'posts';
-    protected static $DBcols = ['id','tittle','created','author','description','image','content'];
+    protected static $DBcols = ['id','tittle','date','author','description','image','content'];
 
     public $id;
     public $tittle;
-    public $created;
+    public $date;
     public $author;
     public $description;
     public $image;
@@ -21,11 +20,11 @@ class Blog extends ActiveRecord{
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;
         $this->tittle = $args['tittle'] ?? '';
-        $this->created = date('Y/m/d') ?? '';
+        $this->date = date('Y/m/d') ?? '';
         $this->author = $args['author'] ?? '';
-        $this->description = $args['description'] ?? null;
+        $this->description = $args['description'] ?? '';
         $this->image = $args['image'] ?? null;
-        $this->content = $args['content'] ?? null;
+        $this->content = $args['content'] ?? '';
     }
 
     public function validate(){
@@ -41,10 +40,14 @@ class Blog extends ActiveRecord{
             self::$errors[] = 'Image is mandatory.';
         }
 
+        if(!$this->description){
+            self::$errors[] = "Description can't be empty";
+        }
+
         if(!$this->content){
             self::$errors[] = "Content can't be empty";
         }
-        
+
 
         return self::$errors;
     }

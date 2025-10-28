@@ -45,7 +45,13 @@
     <section class="blog">
         <h3>Our blog</h3>
 
-        <article class="blog-entry">
+        <?php  
+        
+        include __DIR__ . '/../blog/list.php';
+
+        ?>
+
+        <!-- <article class="blog-entry">
             <div class="image">
                 <picture>
                     <source srcset="build/img/blog1.webp" type="webp">
@@ -82,7 +88,7 @@
                     <p>Maximiza el espacio en tu hogar con esta guia, aprender a combinar muebles y colores para darle vida a tu espacio.</p>
                 </a>
             </div>
-        </article>
+        </article> -->
     </section>
 
 
