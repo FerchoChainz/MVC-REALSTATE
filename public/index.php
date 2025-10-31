@@ -43,6 +43,7 @@ $router->get('/ad',[PageController::class, 'ad']);
 $router->get('/blog',[PageController::class, 'blog']);
 $router->get('/entry',[PageController::class, 'entry']);
 $router->get('/contact',[PageController::class, 'contact']);
+$router->post('/contact',[PageController::class, 'contact']);
 
 
 $router->checkRoutes();

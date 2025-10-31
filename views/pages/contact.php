@@ -1,6 +1,10 @@
 <main class="container section">
     <h1>Formulario de contacto</h1>
 
+    <?php if($message){ ?>
+        <p class="alert succes"><?php echo $message; ?></p>
+    <?php } ?>
+
     <picture>
         <source srcset="build/img/destacada3.webp" type="webp">
         <source srcset="build/img/destacada3.jpg" type="jpeg">
@@ -10,32 +14,29 @@
 
     <h2>Llene el formulario de contacto</h2>
 
-    <form action="" class="form">
+    <form action="/contact" method="POST" class="form">
         <fieldset>
             <legend>Informacion personal</legend>
 
             <label for="name">Nombre</label>
-            <input type="text" placeholder="Tu nombre" id="name">
-            <label for="email">E-mail</label>
-            <input type="email" placeholder="Tu correo" id="email">
-            <label for="phone">Telefono</label>
-            <input type="tel" placeholder="Tu numero" id="phone">
+            <input type="text" placeholder="Tu nombre" id="name" name="contact[name]" >
+            
             <label for="message">Mensaje</label>
-            <textarea id="message"></textarea>
+            <textarea id="message" name="contact[message]"></textarea>
         </fieldset>
 
         <fieldset>
             <legend>Informacion sobre la propiedad</legend>
 
             <label for="options">Vende o Compra</label>
-            <select id="options">
+            <select id="options" name="contact[type]" >
                 <option value="" disabled selected>-- Seleccione --</option>
                 <option value="buy">Compra</option>
                 <option value="sell">Vende</option>
             </select>
 
             <label for="budget">Presupuesto</label>
-            <input type="number" placeholder="Tu presupuesto" id="budget">
+            <input type="number" placeholder="Tu presupuesto" id="budget" name="contact[budget]" >
         </fieldset>
 
         <fieldset>
@@ -45,19 +46,15 @@
 
             <div class="contact-form">
                 <label for="contact-phone">Telefono</label>
-                <input name="contact" type="radio" id="contact-phone" value="phone">
-
+                <input type="radio" id="contact-phone" value="phone" name="contact[contact]">
 
                 <label for="contact-mail">Correo</label>
-                <input name="contact" type="radio" id="contact-mail" value="email">
+                <input type="radio" id="contact-mail" value="email" name="contact[contact]">
             </div>
 
-            <p>Si eligio telefono, elija la fecha y la hora para ser contactado</p>
-            <label for="date">Fecha</label>
-            <input type="date" id="date">
+            <div id="contact"></div>
 
-            <label for="hour">Hora</label>
-            <input type="time" id="hour" min="09:00" max="18:00">
+            
         </fieldset>
 
 
