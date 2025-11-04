@@ -46,6 +46,8 @@ class Admin extends ActiveRecord{
         return $result;
     }
 
+    // TODO:
+
     public function checkPassword($result){
         $user = $result->fetch_object();
 
