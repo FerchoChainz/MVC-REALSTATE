@@ -34,22 +34,31 @@ class Admin extends ActiveRecord{
     public function userExist(){
         // check if user exist
 
-        $query = "SELECT * FROM" . self::$table . " WHERE email = '" .$this->email . "' LIMIT 1";
+        $query = "SELECT * FROM " . self::$table . " WHERE email = '" . $this->email . "' LIMIT 1";
+
         $result = self::$db->query($query);
 
         if(!$result->num_rows){
-            self::$errors [] = 'User does not exist';
-
-            return;
+            // if num rows is empty user not exist
+            self::$errors[] = 'User not exist.';
         }
 
         return $result;
+
     }
 
     // TODO:
 
     public function checkPassword($result){
         $user = $result->fetch_object();
+
+        $authenticated = password_verify($this->password, $user->password);
+
+        if(!$authenticated){
+            self::$errors[] = 'Password is not correct.';
+        }
+
+        return $authenticated;
 
     }
 
