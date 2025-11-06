@@ -27,6 +27,7 @@ class LoginController{
 
                     if($authenticated){
                         // auth user
+                        $auth->authenticate();
                     }else {
                         $errors = Admin::getErrors();
 
@@ -41,6 +42,12 @@ class LoginController{
     }
 
     public static function logout(){
-        echo 'Desde logout';
+        session_start();
+
+        $_SESSION = [];
+
+        header('Location: /');
+
+       debbuger($_SESSION); 
     }
 }

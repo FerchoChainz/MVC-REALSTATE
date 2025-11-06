@@ -48,7 +48,7 @@ if(!isset($main)){
                         <a href="/contact">Contact</a>
 
                         <?php if ($auth): ?>
-                            <a href="logout.php">Logout</a>
+                            <a href="/logout">Logout</a>
                         <?php endif ?>
                     </nav>
                 </div>
